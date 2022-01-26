@@ -3,33 +3,39 @@ import Header from './components/Header';
 import Form from './components/Form';
 import TodoList from './components/TodoList';
 import './App.css';
-
+import api from './service/apiHelper';
 const App = () => {
 
-  const initialState = JSON.parse(localStorage.getItem("todos")) || [];
   const [input, setInput] = useState("");
-  const [todos, setTodos] = useState(initialState);
+  const [description, setDescription] = useState("");
+  const [todos, setTodos] = useState(null);
   const [editTodo, setEditTodo] = useState(null);
 
-  if (todos.length === 0) {
-    fetch("http://localhost:9000/testApi")
-      .then(res => res.text())
-      .then(res => console.log(res));
-  }
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+    api.get().then(res => {
+      setTodos(res);
+    });
+  }, [api]);
+
+  useEffect(() => {
+    api.save(todos).then(res => {
+
+    });
+  }, [todos, editTodo]);
 
   return (
     <div className='container'>
       <div className='app-wrapper'>
         <div>
-          <Header />
+          <Header
+          />
         </div>
         <div>
           <Form
             input={input}
             setInput={setInput}
+            description={description}
+            setDescription={setDescription}
             todos={todos}
             setTodos={setTodos}
             editTodo={editTodo}
@@ -37,7 +43,11 @@ const App = () => {
           />
         </div>
         <div>
-          <TodoList todos={todos} setTodos={setTodos} setEditTodo={setEditTodo} />
+          <TodoList
+            todos={todos}
+            setTodos={setTodos}
+            setEditTodo={setEditTodo}
+          />
         </div>
       </div>
     </div>

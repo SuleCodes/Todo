@@ -13,7 +13,7 @@
 }
 
 .app-wrapper{
-  background-color: #12343b;
+  background-color: #4d4747;
   min-width: 450px;
   min-height: 650px;
   padding: 30px;
@@ -34,6 +34,7 @@
   width:260px; 
   padding: 15px; 
   margin-right:25px; 
+  margin-bottom: 10px;
   font-size: 20px; 
   color: #ccc; 
   background-color:#000000;
@@ -53,13 +54,23 @@
 }
 
 
+
 .list-item{
   display: flex; 
-  margin: 20px 0; 
+  margin: 25px 0 5px 0; 
   border: 1px solid #ccc; 
   border-radius: 10px;
   padding: 10px;
   max-height: 30px;
+}
+
+.description{
+  display: flex; 
+  border: 1px solid #ccc; 
+  border-radius: 10px;
+  padding: 2px;
+ height: 45px;
+  width:100%; 
 }
 
 .button-complete,
@@ -72,7 +83,14 @@
   font-size: 29px;
   border-radius: 50%;
 }
-
+.date-picker{
+  border:none; 
+  outline:none; 
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 29px;
+  border-radius: 50%;
+}
 .button-complete{
   color: #ff6c6c;
   margin-right: 10px;
@@ -94,9 +112,13 @@
   opacity: 0.6;
 }
 
+.form-list{
+ list-style: none;
+}
+
 .list{
   width: 220px;
-  background-color: #12343b;
+  background-color: #4d4747;
   border:none;
   font-size: 20px;
   padding-left: 10px;
